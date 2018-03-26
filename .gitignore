@@ -1,5 +1,7 @@
 target/
 !.mvn/wrapper/maven-wrapper.jar
+/src/main/java/com/epam/storage/compression
+
 
 ### STS ###
 .apt_generated
