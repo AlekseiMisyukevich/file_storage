@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -25,6 +26,7 @@ private static final Logger LOG = LoggerFactory.getLogger(StorageController.clas
 	private String msg;
 	
 	@PostMapping(value = "/file-upload", headers=("content-type = multipart/*"))
+	@ResponseBody
 	public ResponseEntity<?> handleUpload(
 			@RequestBody(required = true) MultipartFile file) {
 		
@@ -49,6 +51,7 @@ private static final Logger LOG = LoggerFactory.getLogger(StorageController.clas
 	}
 	
 	@PostMapping(value = "/file-upload-to", headers = {"content-type = multipart/*"})
+	@ResponseBody
 	public ResponseEntity<?> handleUpload( 
 			@RequestBody(required = true) MultipartFile file,
 			@RequestParam (value = "relPath", required = true) String relPath) {
@@ -68,9 +71,5 @@ private static final Logger LOG = LoggerFactory.getLogger(StorageController.clas
 		
 		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
-		
-		
-		
-	
 	
 }

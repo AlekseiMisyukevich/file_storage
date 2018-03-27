@@ -272,6 +272,7 @@ public class FileRepositoryImpl implements FileRepository {
 							String filename = path.getFileName().toString();
 							String creationTime = attrs.creationTime().toString();
 							map.put(attrs.fileKey().toString(), Arrays.asList(filename, creationTime));
+							break;
 
 						}
 
@@ -301,7 +302,7 @@ public class FileRepositoryImpl implements FileRepository {
 							String filename = path.getFileName().toString();
 							String creationTime = attrs.creationTime().toString();
 							map.put(attrs.fileKey().toString(), Arrays.asList(filename, creationTime));
-
+							break;
 						}
 
 					}

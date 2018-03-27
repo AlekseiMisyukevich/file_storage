@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.epam.storage.service.StorageService;
@@ -22,6 +23,7 @@ public class StorageController {
 	private String msg;
 		
 	@DeleteMapping(value = "/delete-file/{relpath}/{filename}")
+	@ResponseBody
 	public HttpStatus handleDelete (
 			@RequestParam(value = "relpath", required = false) String relpath,
 			@RequestParam(value = "filename", required = true) String filename) {
@@ -49,6 +51,7 @@ public class StorageController {
 	}
 	
 	@PutMapping(value = "/create-folder/{relpath}")
+	@ResponseBody
 	public HttpStatus handlePut ( @PathVariable(value = "relpath", required = true) String relpath) {
 		
 		if (!relpath.isEmpty()) {

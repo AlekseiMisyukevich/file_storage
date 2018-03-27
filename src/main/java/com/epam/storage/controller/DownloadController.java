@@ -15,11 +15,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.epam.storage.service.StorageService;
 
-@RestController
+@RestController("")
 public class DownloadController {
 	
 private static final Logger LOG = LoggerFactory.getLogger(StorageController.class);
@@ -29,7 +30,8 @@ private static final Logger LOG = LoggerFactory.getLogger(StorageController.clas
 	private String msg;
 	
 		
-	@GetMapping("/root-files")
+	@GetMapping(value = "/root-files", produces = "application/json")
+	@ResponseBody
 	public ResponseEntity<?> getAllFiles() {
 
 		try {
@@ -50,7 +52,8 @@ private static final Logger LOG = LoggerFactory.getLogger(StorageController.clas
 
 	}
 
-	@GetMapping(value = "/download-file/{relpath}/{filename}")
+	@GetMapping(value = "/download-file/{relpath}/{filename}", produces = "application/*")
+	@ResponseBody
 	public ResponseEntity<byte[]> handleDownload(
 			@PathVariable(name = "relpath", required = false) String relpath,
 			@PathVariable(name = "filename", required = true) String filename) {
@@ -106,7 +109,8 @@ private static final Logger LOG = LoggerFactory.getLogger(StorageController.clas
 		
 	}	
 	
-	@GetMapping("/search-by-content")
+	@GetMapping(value = "/search-by-content", produces = "application/json")
+	@ResponseBody
 	public ResponseEntity < Map <String, List <String>> > handleSearch ( @RequestParam (value = "file", required = true) String query ) {
 		
 		if (!query.isEmpty()) {
