@@ -14,13 +14,15 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.epam.storage.service.StorageService;
 
-@RestController("")
+@RestController
+@RequestMapping("/")
 public class DownloadController {
 	
 private static final Logger LOG = LoggerFactory.getLogger(StorageController.class);
@@ -30,7 +32,7 @@ private static final Logger LOG = LoggerFactory.getLogger(StorageController.clas
 	private String msg;
 	
 		
-	@GetMapping(value = "/root-files", produces = "application/json")
+	@GetMapping(path = "/root-files", produces = "application/json")
 	@ResponseBody
 	public ResponseEntity<?> getAllFiles() {
 
